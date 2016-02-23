@@ -3,6 +3,7 @@ Meteor mobile app with use of Cordova, Minimongo and Ratchet
 
 ## Based on Josh Owens' tutorial:
 Youtube: https://www.youtube.com/watch?v=7iqdkVwtuvg&list=WL&index=146
+
 GitHub repo: https://github.com/thespacedojo/cityforks (latest version: https://github.com/thespacedojo/cityforks-4)
 
 ## Fixes and tweaks:
