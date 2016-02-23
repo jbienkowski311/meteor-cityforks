@@ -8,6 +8,12 @@ Template.home.onRendered(function(){
 			L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 	          attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 	        }).addTo(map);
+	        L.marker([latitude, longitude]).addTo(map).bindPopup('<h3>User location</h3>Awesome!').openPopup();
+	        var bounds = map.getBounds();
+	        if(bounds){
+	        	Session.set('bottomLeft', [bounds._southWest.lng, bounds._southWest.lat]);
+	        	Session.set('topRight', [bounds._northEast.lng, bounds._northEast.lat]);
+	        }
 		}
 	});
 });
