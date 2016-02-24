@@ -28,19 +28,21 @@ Template.home.onRendered(function(){
 			longitude = Session.get('location').longitude;
 
 		}
-		if(!template.mapRendered){
-			template.map = L.map('map').setView([latitude, longitude], 15);
-			template.mapRendered = true;
-			L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-	         	attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-	        }).addTo(template.map);
-	        template.setBounds();
-	        template.map.on('moveend', function(event) {
-				bounds = event.target.getBounds();
-				template.setBounds(bounds);
-				coords = {latitude: event.target.getCenter().lat, longitude: event.target.getCenter().lng};
-				Meteor.call('fetchNearbyLocations', coords);
-			});
+		if(Template.instance()){
+			if(!template.mapRendered){
+				template.map = L.map('map').setView([latitude, longitude], 15);
+				template.mapRendered = true;
+				L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+		         	attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+		        }).addTo(template.map);
+		        template.setBounds();
+		        template.map.on('moveend', function(event) {
+					bounds = event.target.getBounds();
+					template.setBounds(bounds);
+					coords = {latitude: event.target.getCenter().lat, longitude: event.target.getCenter().lng};
+					Meteor.call('fetchNearbyLocations', coords);
+				});
+			}
 		}
 	});
 });
