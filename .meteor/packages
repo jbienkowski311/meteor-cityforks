@@ -21,3 +21,5 @@ iron:router
 http
 axw:ratchet
 ejson
+bevanhunt:leaflet
+reactive-var
